@@ -11,6 +11,7 @@ pub mod ntt;
 pub mod rns;
 pub mod rq;
 pub mod zq;
+pub mod zqx;
 
 pub use errors::{Error, Result};
 

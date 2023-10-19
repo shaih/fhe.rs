@@ -4,6 +4,11 @@ use rand::{Rng, SeedableRng};
 use rand_chacha::ChaCha8Rng;
 use std::iter::successors;
 
+/// Implementing the Number-Theoretic Transform (NTT) operator using
+/// Gregor Seiler's "Faster AVX2 optimized NTT multiplication for Ring-LWE
+/// lattice cryptography", see https://ia.cr/2018/039
+
+
 /// Number-Theoretic Transform operator.
 #[derive(Debug, Clone, PartialEq, Eq)]
 pub struct NttOperator {
@@ -33,12 +38,30 @@ impl NttOperator {
             let omega = Self::primitive_root(size, p);
             let omega_inv = p.inv(omega)?;
 
+            // powers = (1, omega, omega^2, ..., omega^{size-1})
             let powers = successors(Some(1u64), |n| Some(p.mul(*n, omega)))
                 .take(size)
                 .collect_vec();
+
+            // powers_inv = (omega^{-1}, omega^{-2}, ..., omega^{-size})
             let powers_inv = successors(Some(omega_inv), |n| Some(p.mul(*n, omega_inv)))
                 .take(size)
                 .collect_vec();
+
+            // Order the powers in bit-reverse orde.
+            // For example, with size=8, we have
+            //     (rev(0),rev(1),rev(2),rev(3),rev(4),rev(5),rev(6),rev(7))
+            //     = (0, 4, 2, 6, 1, 5, 3, 7)
+            // and therefore we would get
+            //     omegas = ( powers[0], powers[4], powers[2], powers[6],
+            //                powers[1], powers[5], powers[3], powers[7] )
+            //     = (1, omega^4, omega^2, omega^6, omega, omega^6, omega^2, omega^7)
+            // so omegas[k] = omega^{rev(k)}.
+            //
+            // Using a similar calculation, we have 
+            //   zetas_inv = (omega^{-1}, omega^{-5}, omega^{-3}, omega^{-6}
+            //                omega^{-2}, omega^{-6}, omega^{-4}, omega^{-8})
+            // so zetas_inv[k] = omega^{-rev(k)-1}
 
             let mut omegas = Vec::with_capacity(size);
             let mut zetas_inv = Vec::with_capacity(size);
