@@ -5,7 +5,7 @@ mod ops;
 
 use sha2::{Digest, Sha256};
 
-use crate::{ntt::NttOperator, rq::Representation, Error, Result};
+use crate::{ntt::NttOperator, Error, Result};
 use crate::zq::Modulus;
 
 use fhe_util::sample_vec_cbd;
@@ -14,6 +14,20 @@ use rand::{CryptoRng, RngCore, SeedableRng};
 use rand_chacha::ChaCha8Rng;
 use std::sync::Arc;
 use zeroize::{Zeroize, Zeroizing};
+
+/// Possible representations of the underlying polynomial.
+#[derive(Default, Debug, Clone, PartialEq, Eq)]
+pub enum Representation {
+    /// This is the list of coefficients ci, such that the polynomial is c0 + c1
+    /// * x + ... + c_(degree - 1) * x^(degree - 1)
+    #[default]
+    PowerBasis,
+    /// This is the NTT representation of the PowerBasis representation.
+    Ntt,
+    /// This is a "Shoup" representation of the Ntt representation used for
+    /// faster multiplication.
+    NttShoup,
+}
 
 /// Parameters of a polynomial modulo some q
 #[derive(Debug, Clone, PartialEq, Eq)]

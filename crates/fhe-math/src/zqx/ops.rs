@@ -1,7 +1,7 @@
 //! Implementation of operations over single-precision polynomials.
 
 use super::ZqX;
-use crate::{Error, Result, rq::Representation};
+use crate::{Error, Result, zqx::Representation};
 //use itertools::{Itertools};
 use std::{
     cmp::min,
@@ -413,10 +413,7 @@ mod tests {
     use rand::thread_rng;
 
     use super::dot_product;
-    use crate::{
-        zqx::{Zqcontext, ZqX}, 
-        rq::Representation,
-    };
+    use crate::zqx::{Zqcontext, ZqX, Representation};
     use std::{error::Error, sync::Arc};
 
     static MODULI: &[u64; 3] = &[1153, 4611686018326724609, 4611686018309947393];

@@ -1,6 +1,6 @@
 use thiserror::Error;
 
-use crate::rq::Representation;
+use crate::zqx::Representation;
 
 /// The Result type for this library.
 pub type Result<T> = std::result::Result<T, Error>;
@@ -40,7 +40,7 @@ pub enum Error {
 
 #[cfg(test)]
 mod tests {
-    use crate::{rq::Representation, Error};
+    use crate::{zqx::Representation, Error};
 
     #[test]
     fn error_strings() {

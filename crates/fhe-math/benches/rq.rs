@@ -8,6 +8,7 @@ use std::{
     sync::Arc,
     time::Duration,
 };
+use fhe_math::zqx::Representation;
 
 static MODULI: &[u64; 4] = &[
     562949954093057,

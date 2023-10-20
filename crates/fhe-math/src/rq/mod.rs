@@ -16,7 +16,7 @@ pub use ops::dot_product;
 use sha2::{Digest, Sha256};
 
 use self::{scaler::Scaler, switcher::Switcher, traits::TryConvertFrom};
-use crate::{Error, Result};
+use crate::{Error, Result, zqx::Representation};
 use fhe_util::sample_vec_cbd;
 use itertools::{izip, Itertools};
 use ndarray::{s, Array2, ArrayView2, Axis};
@@ -24,20 +24,6 @@ use rand::{CryptoRng, RngCore, SeedableRng};
 use rand_chacha::ChaCha8Rng;
 use std::sync::Arc;
 use zeroize::{Zeroize, Zeroizing};
-
-/// Possible representations of the underlying polynomial.
-#[derive(Default, Debug, Clone, PartialEq, Eq)]
-pub enum Representation {
-    /// This is the list of coefficients ci, such that the polynomial is c0 + c1
-    /// * x + ... + c_(degree - 1) * x^(degree - 1)
-    #[default]
-    PowerBasis,
-    /// This is the NTT representation of the PowerBasis representation.
-    Ntt,
-    /// This is a "Shoup" representation of the Ntt representation used for
-    /// faster multiplication.
-    NttShoup,
-}
 
 /// An exponent for a substitution.
 #[derive(Debug, PartialEq, Eq)]
