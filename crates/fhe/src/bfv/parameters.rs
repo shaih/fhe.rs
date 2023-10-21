@@ -5,7 +5,8 @@ use crate::{Error, ParametersError, Result};
 use fhe_math::{
     ntt::NttOperator,
     rns::{RnsContext, ScalingFactor},
-    rq::{scaler::Scaler, traits::TryConvertFrom, Context, Poly, Representation},
+    zqx::Representation,
+    rq::{scaler::Scaler, traits::TryConvertFrom, Context, Poly},
     zq::{primes::generate_prime, Modulus},
 };
 use fhe_traits::{Deserialize, FheParameters, Serialize};

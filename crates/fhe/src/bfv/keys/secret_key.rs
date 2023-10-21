@@ -3,7 +3,8 @@
 use crate::bfv::{BfvParameters, Ciphertext, Plaintext};
 use crate::{Error, Result};
 use fhe_math::{
-    rq::{traits::TryConvertFrom, Poly, Representation},
+    zqx::Representation,
+    rq::{traits::TryConvertFrom, Poly},
     zq::Modulus,
 };
 use fhe_traits::{FheDecrypter, FheEncrypter, FheParametrized};

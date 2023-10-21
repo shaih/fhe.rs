@@ -3,7 +3,8 @@
 use crate::bfv::{parameters::BfvParameters, traits::TryConvertFrom};
 use crate::proto::bfv::Ciphertext as CiphertextProto;
 use crate::{Error, Result};
-use fhe_math::rq::{Poly, Representation};
+use fhe_math::zqx::Representation;
+use fhe_math::rq::Poly;
 use fhe_traits::{
     DeserializeParametrized, DeserializeWithContext, FheCiphertext, FheParametrized, Serialize,
 };

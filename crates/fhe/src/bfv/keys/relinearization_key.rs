@@ -8,9 +8,9 @@ use crate::proto::bfv::{
     KeySwitchingKey as KeySwitchingKeyProto, RelinearizationKey as RelinearizationKeyProto,
 };
 use crate::{Error, Result};
+use fhe_math::zqx::Representation;
 use fhe_math::rq::{
-    switcher::Switcher, traits::TryConvertFrom as TryConvertFromPoly, Poly, Representation,
-};
+    switcher::Switcher, traits::TryConvertFrom as TryConvertFromPoly, Poly};
 use fhe_traits::{DeserializeParametrized, FheParametrized, Serialize};
 use prost::Message;
 use rand::{CryptoRng, RngCore};
@@ -157,7 +157,8 @@ mod tests {
     use super::RelinearizationKey;
     use crate::bfv::{traits::TryConvertFrom, BfvParameters, Ciphertext, Encoding, SecretKey};
     use crate::proto::bfv::RelinearizationKey as RelinearizationKeyProto;
-    use fhe_math::rq::{traits::TryConvertFrom as TryConvertFromPoly, Poly, Representation};
+    use fhe_math::zqx::Representation;
+    use fhe_math::rq::{traits::TryConvertFrom as TryConvertFromPoly, Poly};
     use fhe_traits::{FheDecoder, FheDecrypter};
     use rand::thread_rng;
     use std::error::Error;

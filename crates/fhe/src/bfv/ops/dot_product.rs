@@ -1,6 +1,7 @@
 use std::cmp::min;
 
-use fhe_math::rq::{dot_product as poly_dot_product, traits::TryConvertFrom, Poly, Representation};
+use fhe_math::zqx::Representation;
+use fhe_math::rq::{dot_product as poly_dot_product, traits::TryConvertFrom, Poly};
 use itertools::{izip, Itertools};
 use ndarray::{Array, Array2};
 

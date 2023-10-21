@@ -2,7 +2,8 @@ use std::sync::Arc;
 
 use fhe_math::{
     rns::ScalingFactor,
-    rq::{scaler::Scaler, Context, Representation},
+    zqx::Representation,
+    rq::{scaler::Scaler, Context},
     zq::primes::generate_prime,
 };
 use num_bigint::BigUint;

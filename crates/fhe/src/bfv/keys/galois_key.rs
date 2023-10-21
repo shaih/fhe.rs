@@ -4,9 +4,9 @@ use super::key_switching_key::KeySwitchingKey;
 use crate::bfv::{traits::TryConvertFrom, BfvParameters, Ciphertext, SecretKey};
 use crate::proto::bfv::{GaloisKey as GaloisKeyProto, KeySwitchingKey as KeySwitchingKeyProto};
 use crate::{Error, Result};
+use fhe_math::zqx::Representation;
 use fhe_math::rq::{
-    switcher::Switcher, traits::TryConvertFrom as TryConvertFromPoly, Poly, Representation,
-    SubstitutionExponent,
+    switcher::Switcher, traits::TryConvertFrom as TryConvertFromPoly, Poly, SubstitutionExponent,
 };
 use rand::{CryptoRng, RngCore};
 use std::sync::Arc;

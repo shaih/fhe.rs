@@ -8,7 +8,8 @@ pub use mul::Multiplicator;
 
 use super::{Ciphertext, Plaintext};
 use crate::{Error, Result};
-use fhe_math::rq::{Poly, Representation};
+use fhe_math::zqx::Representation;
+use fhe_math::rq::Poly;
 use itertools::{izip, Itertools};
 use std::ops::{Add, AddAssign, Mul, MulAssign, Neg, Sub, SubAssign};
 

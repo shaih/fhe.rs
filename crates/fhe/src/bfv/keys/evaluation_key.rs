@@ -3,7 +3,8 @@
 use crate::bfv::{keys::GaloisKey, traits::TryConvertFrom, BfvParameters, Ciphertext, SecretKey};
 use crate::proto::bfv::{EvaluationKey as EvaluationKeyProto, GaloisKey as GaloisKeyProto};
 use crate::{Error, Result};
-use fhe_math::rq::{traits::TryConvertFrom as TryConvertFromPoly, Poly, Representation};
+use fhe_math::zqx::Representation;
+use fhe_math::rq::{traits::TryConvertFrom as TryConvertFromPoly, Poly};
 use fhe_math::zq::Modulus;
 use fhe_traits::{DeserializeParametrized, FheParametrized, Serialize};
 use prost::Message;

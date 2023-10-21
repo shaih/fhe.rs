@@ -7,7 +7,8 @@ use fhe_math::rq::traits::TryConvertFrom;
 use fhe_math::rq::Context;
 use fhe_math::{
     rns::RnsContext,
-    rq::{Poly, Representation},
+    zqx::Representation,
+    rq::Poly,
 };
 use fhe_traits::{DeserializeWithContext, Serialize};
 use itertools::{izip, Itertools};
@@ -412,7 +413,8 @@ mod tests {
     use crate::proto::bfv::KeySwitchingKey as KeySwitchingKeyProto;
     use fhe_math::{
         rns::RnsContext,
-        rq::{traits::TryConvertFrom as TryConvertFromPoly, Poly, Representation},
+        zqx::Representation,
+        rq::{traits::TryConvertFrom as TryConvertFromPoly, Poly},
     };
     use num_bigint::BigUint;
     use rand::thread_rng;

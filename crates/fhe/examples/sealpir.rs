@@ -10,7 +10,8 @@ mod util;
 
 use console::style;
 use fhe::bfv;
-use fhe_math::rq::{traits::TryConvertFrom, Context, Poly, Representation};
+use fhe_math::zqx::Representation;
+use fhe_math::rq::{traits::TryConvertFrom, Context, Poly};
 use fhe_traits::{
     DeserializeParametrized, FheDecoder, FheDecrypter, FheEncoder, FheEncoderVariableTime,
     FheEncrypter, Serialize,

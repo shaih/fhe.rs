@@ -4,7 +4,8 @@ use crate::proto::bfv::{
     KeySwitchingKey as KeySwitchingKeyProto, RgswCiphertext as RGSWCiphertextProto,
 };
 use crate::{Error, Result};
-use fhe_math::rq::{traits::TryConvertFrom as TryConvertFromPoly, Poly, Representation};
+use fhe_math::zqx::Representation;
+use fhe_math::rq::{traits::TryConvertFrom as TryConvertFromPoly, Poly};
 use fhe_traits::{
     DeserializeParametrized, FheCiphertext, FheEncrypter, FheParametrized, Serialize,
 };
